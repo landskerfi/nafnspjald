@@ -15,6 +15,7 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
 import { LabelComponent } from './label/label.component';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { PrintlabelComponent } from './printlabel/printlabel.component';
+import { PrintComponent } from './print/print.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PrintlabelComponent } from './printlabel/printlabel.component';
     SettingsComponent,
     TopmenuComponent,
     LabelComponent,
-    PrintlabelComponent
+    PrintlabelComponent,
+    PrintComponent
   ],
   imports: [
     MaterialModule,

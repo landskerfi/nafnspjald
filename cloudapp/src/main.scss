@@ -10,3 +10,8 @@
     /* Add global styles here */
 }
 
+app-print {
+    @media screen {
+        display: none;
+    }
+}

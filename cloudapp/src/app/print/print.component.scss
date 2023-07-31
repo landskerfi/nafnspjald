@@ -1,0 +1,74 @@
+html, body, h1, h2, h3, h4, p, img { margin: 0;} /* margin reset*/
+
+.midi {
+    display: grid;
+    font-family: 'Calibri', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+    border: 1px dotted black;
+}
+
+.r72x55 {
+    width: 7.2cm; height: 5.5cm;
+    grid-template-areas: 'a a x'
+                         'b c c';
+    grid-template-columns: 2.2cm 2.1cm 2.9cm;
+    grid-template-rows: 1.5cm 4cm;
+    line-height: 1;
+}
+
+.r72x68 {
+    width: 7.2cm; height: 6.8cm;
+    grid-template-areas: 'b x'
+                         'b a'
+                         'c c'; 
+    grid-template-columns: 2.2cm 5.0cm; 
+    grid-template-rows: 1.1cm 1.7cm 4.0cm; 
+    line-height: 1.05; 
+}
+
+.r87x80 {
+    width: 8.7cm; height: 8.0cm; 
+    display: grid; 
+    grid-template-areas: 'a a x'
+                         'b c c'
+                         'y y y'; 
+    grid-template-columns: 2.2cm 3.0cm 3.5cm; 
+    grid-template-rows: 2.5cm 4.0cm 1.5cm; 
+    line-height: 1.05;
+}
+
+.area {
+    border: 0px dotted black;
+    text-align: center;
+}
+
+
+.a {
+    grid-area: a;
+}
+
+.b {
+    grid-area: b;
+}
+
+.c {
+    grid-area: c;
+    vertical-align: middle;
+    display: flex; 
+    flex-direction: column; 
+    box-sizing: border-box; 
+    overflow: hidden; 
+    // height: 4cm; 
+    justify-content: space-between; 
+    padding: 0.3cm 0.3cm 0.3cm 0.3cm;
+}
+
+.x {
+    grid-area: x;
+}
+
+.y {
+    grid-area: y;
+}
