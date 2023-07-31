@@ -1,0 +1,20 @@
+{
+   "id": "cil-nafnspjald",
+   "title": "CIL Nafnspjald",
+   "subtitle": "Nafnspjald með strikamerki",
+   "description": "Nafnspjald með strikamerki",
+   "author": "Landskerfi bókasafna",
+   "pages": {
+      "settings": "/#/settings"
+   },
+   "contentSecurity": {
+      "sandbox": {
+         "popups": true,
+         "modals": true
+      }
+   },
+   "fullscreen": {
+      "allow": true,
+      "open": false
+   }
+}

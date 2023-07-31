@@ -1,0 +1,34 @@
+<app-topmenu>
+  <div buttons>
+    <button mat-flat-button type="button" color="primary" 
+            (click)="save()" [disabled]="!(form?.dirty)">Save</button>
+  </div>
+</app-topmenu>
+<div class="loading-shade" *ngIf="saving">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>
+<div *ngIf="form">
+    <form [formGroup]="form">
+        <section>
+        <mat-form-field>
+            <mat-label>Veldu rúllu:</mat-label>
+            <mat-select [(value)]="selectedLabel"  formControlName="label">
+                <mat-option *ngFor="let label of labels" [value]="label.id">
+                {{label.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field>
+            <mat-label>Nota strikamerki:</mat-label>
+            <mat-select [(value)]="selectedIdentifier"  formControlName="identifier">
+                <mat-option *ngFor="let i of identifiers" [value]="i.id">
+                {{i.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </section>
+    </form>    
+<pre>{{ form.value | json }}</pre>
+</div>

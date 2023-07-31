@@ -1,0 +1,30 @@
+<div class="midi {{settings?.label}}">    
+            <!-- A -->
+    <div class="area a">
+    </div>
+    <!-- B -->
+    <div class="area b">
+
+    </div>
+    <!-- C -->
+    <div class="area c">
+        <div>
+           <div>{{patron?.name}}</div>
+           <ngx-barcode 
+                [bc-value]="(settings?.identifier == 'strikamerki') ? patron?.strikamerki : patron?.kennitala" 
+                [bc-display-value]="(settings?.identifier== 'strikamerki') ? true : false"
+                [bc-width]="1.6"
+                [bc-height]="50"
+                [bc-font-size]="12"
+                     
+                >
+           </ngx-barcode>
+        </div>
+    </div>
+    <div class="area x">
+        <div></div>
+    </div>
+    <div *ngIf="settings?.label === 'r80x87'" class="area y">
+        <div></div>
+    </div>
+</div>
