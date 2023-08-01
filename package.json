@@ -24,7 +24,6 @@
     "@joshmweisman/ngx-barcode": "^0.3.1",
     "@ngx-translate/core": "~13.0.0",
     "lodash": "~4.17.21",
-    "ngx-barcode6": "^1.0.21",
     "rxjs": "~6.5.5",
     "zone.js": "~0.10.3"
   },
