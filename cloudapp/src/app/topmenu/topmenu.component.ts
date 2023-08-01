@@ -17,7 +17,6 @@ export class TopmenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.appService.getTitle().subscribe(appTitle => this.title = appTitle);
   }
 
 }

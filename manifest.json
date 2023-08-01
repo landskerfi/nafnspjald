@@ -4,6 +4,9 @@
    "subtitle": "Nafnspjald með strikamerki",
    "author": "Landskerfi bókasafna",
    "description": "Nafnspjald með strikamerki",
+   "entities": [
+      "USER"
+   ],
    "pages": {
       "settings": "/#/settings"
    },
@@ -16,5 +19,10 @@
    "fullscreen": {
       "allow": true,
       "open": false
+   },
+   "icon": {
+      "type": "url",
+      "value": "/assets/cil_nafnspjald.png",
+      "width": 32
    }
 }

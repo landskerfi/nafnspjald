@@ -9,12 +9,10 @@ import { MaterialModule, CloudAppTranslateModule, AlertModule } from '@exlibris/
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
-import { PatronComponent } from './patron/patron.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TopmenuComponent } from './topmenu/topmenu.component';
 import { LabelComponent } from './label/label.component';
-import { NgxBarcodeModule } from 'ngx-barcode';
-import { PrintlabelComponent } from './printlabel/printlabel.component';
+import { NgxBarcodeModule } from '@joshmweisman/ngx-barcode';
 import { PrintComponent } from './print/print.component';
 
 
@@ -22,11 +20,9 @@ import { PrintComponent } from './print/print.component';
   declarations: [
     AppComponent,
     MainComponent,
-    PatronComponent,
     SettingsComponent,
     TopmenuComponent,
     LabelComponent,
-    PrintlabelComponent,
     PrintComponent
   ],
   imports: [

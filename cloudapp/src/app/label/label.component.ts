@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, ApplicationRef, ComponentFactoryResolver, Injector, ViewContainerRef, ComponentRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from '@angular/core';
 import { Patron } from '../models/patron';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CloudAppRestService, CloudAppSettingsService } from '@exlibris/exl-cloudapp-angular-lib';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { Settings } from '../models/settings';
 import { PrintComponent } from '../print/print.component';
 
@@ -13,11 +13,11 @@ import { PrintComponent } from '../print/print.component';
 })
 export class LabelComponent implements OnInit {
   
+  loading = true;
   patron: Patron;
   settings: Settings;
   printComponent: ComponentRef<PrintComponent>;
   @ViewChild('iframe', { read: ElementRef }) iframe: ElementRef;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -26,23 +26,17 @@ export class LabelComponent implements OnInit {
     private settingsService: CloudAppSettingsService,
     private vcref: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
-
   ) { }
 
   ngOnInit(): void {
-   //this.patronId = this.route.snapshot.paramMap.get('id');
-   //console.log(this.patronId);
     this.restService.call<any>('/users/'+this.route.snapshot.paramMap.get('id'))
-    .pipe(
-      //finalize(()=>this.loading=false),
+    .pipe(finalize(() => this.loading = false),
       map(result => { this.patron = new Patron(
       result.full_name,
       result.primary_id,
       result.user_identifier.filter(x => x.id_type.value == '01').pop().value
     )}))
-    .subscribe(
-      //result => console.log('result:', result),
-    )
+    .subscribe()
     
     this.settingsService.get().subscribe(settings => {
       this.settings = settings as Settings;
@@ -51,27 +45,13 @@ export class LabelComponent implements OnInit {
     this.printComponent = this.vcref.createComponent(componentFactory);
   }
 
-  prenta(){
-    window.print();
-  }
-
   printIframe():void {
     const doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
     const CIL_style = "<style>@media print {html, body {margin: 0px;}}</style>";
     doc.body.innerHTML = CIL_style;
     doc.body.appendChild(this.printComponent.location.nativeElement);
-    // iframe.contentWindow.print();
     this.iframe.nativeElement.contentWindow.print();
     this.router.navigate(['/']);
   }
-
-
-  // print(){
-  //   const doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
-  //   const CIL_style = "<style>@media print {html, body {margin: 0px;}}</style>";
-  //   doc.body.innertHTML = CIL_style;
-  //   doc.body.appendChild(this.iframe.nativeElement.contentWindow.document.getElementById('label'));
-  // }
-
 
 }

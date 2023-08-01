@@ -28,15 +28,12 @@ export class PrintComponent implements OnInit {
 
     this.restService.call<any>('/users/'+this.route.snapshot.paramMap.get('id'))
     .pipe(
-      //finalize(()=>this.loading=false),
       map(result => { this.patron = new Patron(
       result.full_name,
       result.primary_id,
       result.user_identifier.filter(x => x.id_type.value == '01').pop().value
     )}))
-    .subscribe(
-      //result => console.log('result:', result),
-    )
+    .subscribe()
     
     this.settingsService.get().subscribe(settings => {
       this.settings = settings as Settings;

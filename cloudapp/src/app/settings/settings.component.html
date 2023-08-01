@@ -1,7 +1,7 @@
 <app-topmenu>
   <div buttons>
     <button mat-flat-button type="button" color="primary" 
-            (click)="save()" [disabled]="!(form?.dirty)">Save</button>
+            (click)="save()" [disabled]="!(form?.dirty)">Vista</button>
   </div>
 </app-topmenu>
 <div class="loading-shade" *ngIf="saving">
@@ -21,7 +21,7 @@
         </section>
         <section>
         <mat-form-field>
-            <mat-label>Nota strikamerki:</mat-label>
+            <mat-label>Nota sem strikamerki:</mat-label>
             <mat-select [(value)]="selectedIdentifier"  formControlName="identifier">
                 <mat-option *ngFor="let i of identifiers" [value]="i.id">
                 {{i.name}}
@@ -30,5 +30,5 @@
         </mat-form-field>
     </section>
     </form>    
-<pre>{{ form.value | json }}</pre>
+<!-- <pre>{{ form.value | json }}</pre> -->
 </div>

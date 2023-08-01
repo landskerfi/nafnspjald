@@ -3,8 +3,9 @@
 <button mat-flat-button type="button" color="primary" (click)="printIframe()">Prenta</button>
 </div>
 </app-topmenu>
-<!-- {{ patron | json }} -->
-<!-- {{ settings | json }} -->
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
 <div class="midi {{settings?.label}}">    
             <!-- A -->
     <div class="area a">
@@ -23,7 +24,6 @@
                 [bc-width]="1.6"
                 [bc-height]="50"
                 [bc-font-size]="12"
-                     
                 >
            </ngx-barcode>
         </div>
@@ -31,9 +31,8 @@
     <div class="area x">
         <div></div>
     </div>
-    <div *ngIf="settings?.label === 'r80x87'" class="area y">
+    <div *ngIf="settings?.label == 'r87x80'" class="area y">
         <div></div>
     </div>
 </div>
-<!-- <app-printlabel></app-printlabel> -->
 <iframe style="visibility: hidden;" #iframe></iframe>
