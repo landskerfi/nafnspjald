@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
 
   identifiers: any[] = [
     {name: 'Kennitala', id: 'kennitala'},
-    {name: 'Ge-númer', id: 'strikamerki'},
+    {name: 'Strikamerki', id: 'strikamerki'},
   ];
 
   constructor(
