@@ -26,16 +26,18 @@ export class LabelComponent implements OnInit {
     private settingsService: CloudAppSettingsService,
     private vcref: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
-  ) { }
+  ) { 
+    this.patron = new Patron('','','');
+  }
 
   ngOnInit(): void {
     this.restService.call<any>('/users/'+this.route.snapshot.paramMap.get('id'))
     .pipe(finalize(() => this.loading = false),
-      map(result => { this.patron = new Patron(
-      result.full_name,
-      result.primary_id,
-      result.user_identifier.filter(x => x.id_type.value == '01').pop().value
-    )}))
+      map(result => { 
+      this.patron.name = result.full_name,
+      this.patron.kennitala = result.primary_id,
+      this.patron.strikamerki = result.user_identifier.filter(x => x.id_type.value == '01').pop().value
+      }))
     .subscribe()
     
     this.settingsService.get().subscribe(settings => {
