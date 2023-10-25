@@ -9,13 +9,14 @@
     <!-- C -->
     <div class="area c">
         <div>
-           <div>{{patron?.name}}</div>
+           <div [ngStyle]="{'font-weight': (settings?.identifier == 'primaryId') ? '700': '400'}">{{settings?.identifier == 'primaryId' ? patron?.polishName : patron?.name}}</div>
            <ngx-barcode 
-                [bc-value]="(settings?.identifier == 'strikamerki') ? patron?.strikamerki : patron?.kennitala" 
-                [bc-display-value]="(settings?.identifier== 'strikamerki') ? true : false"
+                [bc-value]="settings?.identifier !== 'strikamerki' ? patron?.kennitala : patron?.strikamerki" 
+                [bc-display-value]="(settings?.identifier !== 'kennitala') ? true : false"
                 [bc-width]="1.6"
-                [bc-height]="50"
-                [bc-font-size]="12"
+                [bc-height]="(settings?.identifier == 'primaryId') ? '40':'50'"
+                [bc-font-size]="(settings?.identifier == 'primaryId' ) ? '18':'12'"
+                [bc-font-options]="(settings?.identifier == 'primaryId') ? 'bold' : ''"
                 >
            </ngx-barcode>
         </div>
@@ -23,7 +24,7 @@
     <div class="area x">
         <div></div>
     </div>
-    <div *ngIf="settings?.label === 'r80x87'" class="area y">
+    <div *ngIf="settings?.label == 'r87x80'" class="area y">
         <div></div>
     </div>
 </div>

@@ -39,6 +39,16 @@ html, body, h1, h2, h3, h4, p, img { margin: 0;} /* margin reset*/
     line-height: 1.05;
 }
 
+.karta_biblioteczna {
+    width: 8.5cm; height: 5.4cm;
+    display: grid;
+    grid-template-areas: 'b x'
+                         'b c';
+    grid-template-columns: 1.0cm 7.5cm;
+    grid-template-rows: 2.3cm 3.1cm;
+    line-height: 1.05
+}
+
 .area {
     border: 0px dotted black;
     text-align: center;
