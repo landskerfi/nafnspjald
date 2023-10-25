@@ -27,7 +27,7 @@ export class LabelComponent implements OnInit {
     private vcref: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
   ) { 
-    this.patron = new Patron('','','');
+    this.patron = new Patron('','','','','');
   }
 
   ngOnInit(): void {
@@ -35,7 +35,10 @@ export class LabelComponent implements OnInit {
     .pipe(finalize(() => this.loading = false),
       map(result => { 
       this.patron.name = result.full_name,
+      this.patron.polishName = result.last_name + ' ' + result.first_name,
       this.patron.kennitala = result.primary_id,
+      //for polish cards
+      this.patron.primaryId = result.primary_id,
       this.patron.strikamerki = result.user_identifier.filter(x => x.id_type.value == '01').pop().value
       }))
     .subscribe()

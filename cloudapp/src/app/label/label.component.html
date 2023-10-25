@@ -17,13 +17,14 @@
     <!-- C -->
     <div class="area c">
         <div>
-           <div>{{patron?.name}}</div>
+           <div [ngStyle]="{'font-weight': (settings?.identifier == 'primaryId') ? '700': '400'}">{{settings?.identifier == 'primaryId' ? patron?.polishName : patron?.name}}</div>
            <ngx-barcode 
                 [bc-value]="(settings?.identifier == 'strikamerki') ? patron?.strikamerki : patron?.kennitala" 
-                [bc-display-value]="(settings?.identifier== 'strikamerki') ? true : false"
+                [bc-display-value]="(settings?.identifier== 'kennitala') ? false : true"
                 [bc-width]="1.6"
-                [bc-height]="50"
-                [bc-font-size]="12"
+                [bc-height]="(settings?.identifier == 'primaryId') ? '40':'50'"
+                [bc-font-size]="(settings?.identifier == 'primaryId' ) ? '18':'12'"
+                [bc-font-options]="(settings?.identifier == 'primaryId') ? 'bold' : ''"
                 >
            </ngx-barcode>
         </div>

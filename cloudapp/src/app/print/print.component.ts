@@ -30,6 +30,8 @@ export class PrintComponent implements OnInit {
     .pipe(
       map(result => { this.patron = new Patron(
       result.full_name,
+      result.last_name + ' ' + result.first_name,
+      result.primary_id,
       result.primary_id,
       result.user_identifier.filter(x => x.id_type.value == '01').pop().value
     )}))

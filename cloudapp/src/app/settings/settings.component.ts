@@ -18,11 +18,13 @@ export class SettingsComponent implements OnInit {
     {name: 'R 72 x 68', id: 'r72x68'}, 
     {name: 'R 72 x 55', id: 'r72x55'},
     {name: 'R 87 x 80', id: 'r87x80'},
+    {name: 'Karta biblioteczna', id: 'karta_biblioteczna'}
   ];
 
   identifiers: any[] = [
     {name: 'Kennitala', id: 'kennitala'},
     {name: 'Strikamerki', id: 'strikamerki'},
+    {name: 'Primary Id', id: 'primaryId'}
   ];
 
   constructor(
