@@ -34,7 +34,7 @@ export class LabelComponent implements OnInit {
     this.restService.call<any>('/users/'+this.route.snapshot.paramMap.get('id'))
     .pipe(finalize(() => this.loading = false),
       map(result => { 
-      this.patron.name = result.full_name,
+      this.patron.name = this.preferredName(result.first_name,result.middle_name,result.last_name,result.pref_first_name,result.pref_middle_name,result.pref_last_name),
       this.patron.polishName = result.last_name + ' ' + result.first_name,
       this.patron.kennitala = result.primary_id,
       //for polish cards
@@ -49,6 +49,16 @@ export class LabelComponent implements OnInit {
     const componentFactory = this.resolver.resolveComponentFactory(PrintComponent);
     this.printComponent = this.vcref.createComponent(componentFactory);
   }
+
+  preferredName(first_name: string, middle_name: string, last_name: string, pref_first_name: string, pref_middle_name: string, pref_last_name: string ){
+  const names: string[] = [];
+
+  if (pref_first_name) { names.push(pref_first_name) } else if (first_name) { names.push(first_name)};
+  if (pref_middle_name) { names.push(pref_middle_name) } else if (middle_name) { names.push(middle_name)};
+  if (pref_last_name) { names.push(pref_last_name)} else if (last_name) {names.push(last_name)};
+
+  return names.join(" ");
+ }
 
   printIframe():void {
     const doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
